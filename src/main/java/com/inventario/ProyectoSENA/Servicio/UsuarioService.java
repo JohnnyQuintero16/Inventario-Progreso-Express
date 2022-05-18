@@ -15,6 +15,5 @@ public interface UsuarioService {
     public List<Usuario> getUsuarios();
     public void guardarUsuario(Usuario usuario);
     public boolean encontrarUsuario(int id);
-    public void eliminarUsuario(int id);
 
 }

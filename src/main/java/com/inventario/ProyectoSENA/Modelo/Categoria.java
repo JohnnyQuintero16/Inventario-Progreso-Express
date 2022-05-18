@@ -39,8 +39,8 @@ public class Categoria implements Serializable {
     @Basic(optional = false)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
-    private Collection<Producto> productoCollection;
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
+    private Collection<Producto> productoCollection;*/
 
     public Categoria() {
     }
@@ -70,13 +70,13 @@ public class Categoria implements Serializable {
         this.nombre = nombre;
     }
 
-    public Collection<Producto> getProductoCollection() {
+    /*public Collection<Producto> getProductoCollection() {
         return productoCollection;
     }
 
     public void setProductoCollection(Collection<Producto> productoCollection) {
         this.productoCollection = productoCollection;
-    }
+    }*/
 
     @Override
     public int hashCode() {

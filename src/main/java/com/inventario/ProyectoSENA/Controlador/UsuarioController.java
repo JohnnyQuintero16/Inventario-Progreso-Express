@@ -39,15 +39,6 @@ public class UsuarioController {
         }
     }
 
-    @PostMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarUsuario(@PathVariable int id){
-        if(!this.usuarioImp.encontrarUsuario(id))
-            return ResponseEntity.ok("Usuario No se encuetra registrado");
-        else{
-            this.usuarioImp.eliminarUsuario(id);
-            return ResponseEntity.ok("Usuario eliminado");
-        }
-    }
 
     @PostMapping("/actualizar")
     public ResponseEntity<?> actualizarUsuario(@RequestBody Usuario usuario) {

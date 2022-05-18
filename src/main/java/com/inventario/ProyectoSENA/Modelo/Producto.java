@@ -57,7 +57,6 @@ public class Producto implements Serializable {
     @Column(name = "precioCompra")
     private int precioCompra;
     @Basic(optional = false)
-    @Lob
     @Column(name = "imgUrl")
     private String imgUrl;
     @Basic(optional = false)
@@ -66,8 +65,8 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @Column(name = "marca")
     private String marca;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
-    private Collection<DetalleProducto> detalleProductoCollection;
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
+    private Collection<DetalleProducto> detalleProductoCollection;*/
     @JoinColumn(name = "categoria", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Categoria categoria;
@@ -154,13 +153,13 @@ public class Producto implements Serializable {
         this.marca = marca;
     }
 
-    public Collection<DetalleProducto> getDetalleProductoCollection() {
+   /* public Collection<DetalleProducto> getDetalleProductoCollection() {
         return detalleProductoCollection;
     }
 
     public void setDetalleProductoCollection(Collection<DetalleProducto> detalleProductoCollection) {
         this.detalleProductoCollection = detalleProductoCollection;
-    }
+    }*/
 
     public Categoria getCategoria() {
         return categoria;

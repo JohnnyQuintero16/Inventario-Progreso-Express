@@ -39,10 +39,4 @@ public class UsuarioImp implements UsuarioService{
             return true;
         return false;
     }
-
-    @Override
-    public void eliminarUsuario(int id) {
-        this.usuarioDAO.deleteById(id);
-    }
-
 }
