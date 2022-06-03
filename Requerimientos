@@ -1,12 +1,29 @@
-﻿Requerimientos a prograrm
-
-- Registrar productos 
-- Actualizar productos
-- Eliminar productos
-- Mostrar productos
+﻿Requerimientos a programar
+- Registrar productos(ok)
+- Actualizar productos(ok)
+- Eliminar productos(ok)
+- Mostrar productos(ok)
 - Login al sistema según el rol
 - Historial de ventas (admin y cliente)
 - Historial de compras (admin)
 - Graficos estadisticos de ventas (admin)
+- Tomar pedidos de clientes
+- Registrar compras realizadas
 
+Vistas:
+- index
+- productos
+- iniciar sesion
+- registrarse
 
+cliente:
+
+	ver pedidos realizados
+	actualizar datos personales
+
+admin
+	
+	gestionar productos
+	ventas realizadas(mismo de pedidos)
+	compras realizadas
+	gestionar clientes

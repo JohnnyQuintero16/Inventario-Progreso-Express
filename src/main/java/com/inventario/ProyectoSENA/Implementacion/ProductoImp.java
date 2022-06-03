@@ -29,7 +29,6 @@ public class ProductoImp implements ProductoService {
     public Optional<Producto> encontrarProducto(int id) {
         return this.productoDAO.findById(id);
     }
-
     @Override
     public void eliminarProdcuto(int id) {
         Optional<Producto> prod = this.encontrarProducto(id);
