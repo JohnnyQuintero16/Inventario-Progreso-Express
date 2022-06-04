@@ -4,6 +4,7 @@
  */
 package com.inventario.ProyectoSENA.Servicio;
 
+import com.inventario.ProyectoSENA.Modelo.LoginUsuario;
 import com.inventario.ProyectoSENA.Modelo.Usuario;
 import java.util.List;
 
@@ -14,6 +15,9 @@ import java.util.List;
 public interface UsuarioService {
     public List<Usuario> getUsuarios();
     public void guardarUsuario(Usuario usuario);
+    public boolean encontrarUsuarioCorreo(String correo);
     public boolean encontrarUsuario(int id);
+    public Usuario buscarUsuario(int id);
+    public Usuario loginUsuario(LoginUsuario loginUsuario);
 
 }

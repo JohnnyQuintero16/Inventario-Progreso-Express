@@ -51,6 +51,9 @@ public class Factura implements Serializable {
     @Basic(optional = false)
     @Column(name = "descuento")
     private int descuento;
+    @Basic(optional = false)
+    @Column(name = "concepto")
+    private String concepto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFactura")
     private Collection<ClienteFactura> clienteFacturaCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idFactura")
@@ -63,11 +66,12 @@ public class Factura implements Serializable {
         this.id = id;
     }
 
-    public Factura(Integer id, Date fecha, int total, int descuento) {
+    public Factura(Integer id, Date fecha, int total, int descuento, String concepto) {
         this.id = id;
         this.fecha = fecha;
         this.total = total;
         this.descuento = descuento;
+        this.concepto = concepto;
     }
 
     public Integer getId() {
@@ -102,19 +106,28 @@ public class Factura implements Serializable {
         this.descuento = descuento;
     }
 
-    public Collection<ClienteFactura> getClienteFacturaCollection() {
+    public String getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(String concepto) {
+        this.concepto = concepto;
+    }
+    
+
+    public Collection<ClienteFactura> ClienteFacturaCollection() {
         return clienteFacturaCollection;
     }
 
-    public void setClienteFacturaCollection(Collection<ClienteFactura> clienteFacturaCollection) {
+    public void ClienteFacturaCollection(Collection<ClienteFactura> clienteFacturaCollection) {
         this.clienteFacturaCollection = clienteFacturaCollection;
     }
 
-    public Collection<DetalleProducto> getDetalleProductoCollection() {
+    public Collection<DetalleProducto> DetalleProductoCollection() {
         return detalleProductoCollection;
     }
 
-    public void setDetalleProductoCollection(Collection<DetalleProducto> detalleProductoCollection) {
+    public void DetalleProductoCollection(Collection<DetalleProducto> detalleProductoCollection) {
         this.detalleProductoCollection = detalleProductoCollection;
     }
 

@@ -5,8 +5,10 @@
 package com.inventario.ProyectoSENA.Controlador;
 
 import com.inventario.ProyectoSENA.Implementacion.UsuarioImp;
+import com.inventario.ProyectoSENA.Modelo.LoginUsuario;
 import com.inventario.ProyectoSENA.Modelo.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,14 +33,13 @@ public class UsuarioController {
 
     @PostMapping("/guardar")
     public ResponseEntity<?> guardarUsuario(@RequestBody Usuario usuario){
-        if(this.usuarioImp.encontrarUsuario(usuario.getId()))
-            return ResponseEntity.ok("Usuario Ya se encuetra registrado  " + usuario);
+        if(this.usuarioImp.encontrarUsuarioCorreo(usuario.getCorreo()))
+            return ResponseEntity.ok("Usuario Ya se encuetra registrado con el mismo correo " + usuario);
         else{
             this.usuarioImp.guardarUsuario(usuario);
             return ResponseEntity.ok("Usuario registrado  " + usuario);
         }
     }
-
 
     @PostMapping("/actualizar")
     public ResponseEntity<?> actualizarUsuario(@RequestBody Usuario usuario) {
@@ -48,5 +49,12 @@ public class UsuarioController {
         }else{
             return ResponseEntity.ok("Usuario no encontrado");
         }
+    }
+    
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginUsuario loginUsuario){
+        if(this.usuarioImp.loginUsuario(loginUsuario) != null)
+            return new ResponseEntity("Logueado", HttpStatus.OK);
+        return new ResponseEntity("No logueado", HttpStatus.NOT_ACCEPTABLE);
     }
 }
