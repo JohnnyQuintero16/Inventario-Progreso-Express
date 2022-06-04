@@ -8,6 +8,7 @@ import com.inventario.ProyectoSENA.DAO.DetalleProductoDAO;
 import com.inventario.ProyectoSENA.Modelo.DetalleProducto;
 import com.inventario.ProyectoSENA.Modelo.Factura;
 import com.inventario.ProyectoSENA.Modelo.Producto;
+import com.inventario.ProyectoSENA.Modelo.ProductoId;
 import com.inventario.ProyectoSENA.Servicio.DetalleProductoService;
 import java.util.List;
 import java.util.Optional;
@@ -28,21 +29,22 @@ public class DetalleProductoImp implements DetalleProductoService{
     ProductoImp productoImp;
     
     @Override
-    public void guardarProductos(Factura factura, List<Integer> productos) {
+    public void guardarProductos(Factura factura, List<ProductoId> idproductos) {
         
-        /*for(int i = 0; i < productos.size(); i++){
+        for(int i = 0; i < idproductos.size(); i++){
             int cntProducto = 0;
-            for(int j = i; j < productos.size(); j++){
-                if(productos.get(i) == productos.get(j).getId()) cntProducto++;
+            for(int j = i; j < idproductos.size(); j++){
+                if(idproductos.get(i).getIdProducto() == idproductos.get(j).getIdProducto()) cntProducto++;
             }
-            DetalleProducto detalleProducto = new DetalleProducto(0, productos.get(i).getPrecioVenta(), cntProducto);
+            Producto ingresa = this.productoImp.encontrarProducto(idproductos.get(i).getIdProducto()).get();
+            DetalleProducto detalleProducto = new DetalleProducto(0, ingresa.getPrecioVenta() , cntProducto);
             System.out.println(cntProducto);
-            productos.get(i).setCantidad(productos.get(i).getCantidad()-cntProducto);
-            this.productoImp.guardarProducto(productos.get(i));
-            detalleProducto.setIdProducto(productos.get(i));
+            ingresa.setCantidad(ingresa.getCantidad()-cntProducto);
+            this.productoImp.guardarProducto(ingresa);
+            detalleProducto.setIdProducto(ingresa);
             detalleProducto.setIdFactura(factura);
             this.detalleProductoDAO.save(detalleProducto);
-        }*/
+        }
     }
 
     @Override

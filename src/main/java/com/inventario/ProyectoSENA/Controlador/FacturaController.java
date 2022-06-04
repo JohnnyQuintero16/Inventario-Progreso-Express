@@ -10,7 +10,7 @@ import com.inventario.ProyectoSENA.Implementacion.FacturaImp;
 import com.inventario.ProyectoSENA.Implementacion.UsuarioImp;
 import com.inventario.ProyectoSENA.Modelo.ClienteFactura;
 import com.inventario.ProyectoSENA.Modelo.Factura;
-import com.inventario.ProyectoSENA.Modelo.Producto;
+import com.inventario.ProyectoSENA.Modelo.ProductoId;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -57,16 +56,15 @@ public class FacturaController {
     }
     
     @PostMapping("pedido/{idfactura}/{idCliente}")
-    public ResponseEntity<?> guardarPedido(@PathVariable Integer idfactura, @PathVariable Integer idCliente){
-        //System.out.println(idproducts);
-        //this.detalleProductoImp.guardarProductos(this.facturaImp.getFactura(idfactura), idproducts);
-        /*Factura fac = this.facturaImp.getFactura(idfactura);
+    public ResponseEntity<?> guardarPedido(@PathVariable Integer idfactura, @PathVariable Integer idCliente, @RequestBody List<ProductoId> idproducts){
+        this.detalleProductoImp.guardarProductos(this.facturaImp.getFactura(idfactura), idproducts);
+        Factura fac = this.facturaImp.getFactura(idfactura);
         fac.setTotal(this.detalleProductoImp.getTotalFactura(idfactura));
         this.facturaImp.guardar(fac);
         ClienteFactura clienteFactura = new ClienteFactura();
         clienteFactura.setIdCliente(this.usuarioImp.buscarUsuario(idCliente));
         clienteFactura.setIdFactura(fac);
-        this.clienteFacturaImp.guardarClienteFactura(clienteFactura);*/
+        this.clienteFacturaImp.guardarClienteFactura(clienteFactura);
         return ResponseEntity.ok("añadidos");
     }
     
