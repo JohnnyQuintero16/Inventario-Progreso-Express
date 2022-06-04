@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("usuario")
-
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class UsuarioController {
 
     @Autowired
@@ -33,11 +33,14 @@ public class UsuarioController {
 
     @PostMapping("/guardar")
     public ResponseEntity<?> guardarUsuario(@RequestBody Usuario usuario){
+        System.out.println("entrando a registrar");
         if(this.usuarioImp.encontrarUsuarioCorreo(usuario.getCorreo()))
             return ResponseEntity.ok("Usuario Ya se encuetra registrado con el mismo correo " + usuario);
         else{
             this.usuarioImp.guardarUsuario(usuario);
-            return ResponseEntity.ok("Usuario registrado  " + usuario);
+            return ResponseEntity.status(HttpStatus.OK)
+                                        .body(usuario);
+//            return ResponseEntity.ok("Usuario registrado  " + usuario);
         }
     }
 
@@ -53,8 +56,14 @@ public class UsuarioController {
     
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginUsuario loginUsuario){
-        if(this.usuarioImp.loginUsuario(loginUsuario) != null)
-            return new ResponseEntity("Logueado", HttpStatus.OK);
+        System.out.println(loginUsuario.getCorreo());
+        System.out.println(loginUsuario.getClave());
+        if(this.usuarioImp.loginUsuario(loginUsuario) != null){
+            return ResponseEntity.status(HttpStatus.OK)
+                                        .body(loginUsuario);
+//            return new ResponseEntity("Logueado", HttpStatus.OK);
+            
+        }
         return new ResponseEntity("No logueado", HttpStatus.NOT_ACCEPTABLE);
     }
 }
