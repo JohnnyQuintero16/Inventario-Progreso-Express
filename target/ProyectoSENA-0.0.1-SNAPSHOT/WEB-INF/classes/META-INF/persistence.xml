@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.inventario_ProyectoSENA_war_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.inventario.ProyectoSENA.Modelo.Usuario</class>
+    <class>com.inventario.ProyectoSENA.Modelo.Factura</class>
+    <class>com.inventario.ProyectoSENA.Modelo.Categoria</class>
+    <class>com.inventario.ProyectoSENA.Modelo.ClienteFactura</class>
+    <class>com.inventario.ProyectoSENA.Modelo.Producto</class>
+    <class>com.inventario.ProyectoSENA.Modelo.DetalleProducto</class>
+    <class>com.inventario.ProyectoSENA.Modelo.Rol</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://remotemysql.com/AJFFXNdrij?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.user" value="AJFFXNdrij"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="fSk4sNcTaD"/>
+    </properties>
+  </persistence-unit>
+</persistence>
