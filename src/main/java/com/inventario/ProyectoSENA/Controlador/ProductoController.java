@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/producto")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProductoController {
 
     @Autowired
@@ -19,7 +19,7 @@ public class ProductoController {
         return ResponseEntity.ok(this.productoImp.getProducto());
     }
 
-    @PostMapping("eliminar/{id}")
+    @DeleteMapping("eliminar/{id}")
     public ResponseEntity<?> eliminarProducto(@PathVariable int id){
         this.productoImp.eliminarProdcuto(id);
         return ResponseEntity.ok("Eliminado correctamente");

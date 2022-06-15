@@ -12,7 +12,9 @@ public class LoginUsuario {
 
     private String correo;
     private String clave;
-
+    
+    
+    
     public String getCorreo() {
         return correo;
     }

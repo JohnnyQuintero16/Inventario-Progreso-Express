@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("usuario")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     @Autowired
@@ -56,13 +56,10 @@ public class UsuarioController {
     
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginUsuario loginUsuario){
-        System.out.println(loginUsuario.getCorreo());
-        System.out.println(loginUsuario.getClave());
-        if(this.usuarioImp.loginUsuario(loginUsuario) != null){
+        Usuario user = this.usuarioImp.loginUsuario(loginUsuario);
+        if(user != null){
             return ResponseEntity.status(HttpStatus.OK)
-                                        .body(loginUsuario);
-//            return new ResponseEntity("Logueado", HttpStatus.OK);
-            
+                                        .body(user);
         }
         return new ResponseEntity("No logueado", HttpStatus.NOT_ACCEPTABLE);
     }

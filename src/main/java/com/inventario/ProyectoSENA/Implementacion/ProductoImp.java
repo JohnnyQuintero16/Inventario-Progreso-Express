@@ -3,6 +3,7 @@ package com.inventario.ProyectoSENA.Implementacion;
 import com.inventario.ProyectoSENA.DAO.ProductoDAO;
 import com.inventario.ProyectoSENA.Modelo.Producto;
 import com.inventario.ProyectoSENA.Servicio.ProductoService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,13 @@ public class ProductoImp implements ProductoService {
 
     @Override
     public List<Producto> getProducto() {
-        return this.productoDAO.findAll();
+        
+        List<Producto> list = new ArrayList<>();
+        for(Producto p: this.productoDAO.findAll()){
+            if(p.getEstado().equals("activo"))
+                list.add(p);
+        }
+        return list;
     }
 
     @Override
