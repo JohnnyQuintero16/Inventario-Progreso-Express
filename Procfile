@@ -1,2 +1,1 @@
-
-web: java -jar target/ProyectoSENA-0.0.1-SNAPSHOT.war
+web: java -Dserver.port=$PORT -jar target/heroku-demo-0.0.1-SNAPSHOT.jar
