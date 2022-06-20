@@ -7,7 +7,6 @@ package com.inventario.ProyectoSENA.Controlador;
 import com.inventario.ProyectoSENA.Implementacion.ClienteFacturaImp;
 import com.inventario.ProyectoSENA.Implementacion.FacturaImp;
 import com.inventario.ProyectoSENA.Modelo.ClienteFactura;
-import static com.inventario.ProyectoSENA.Modelo.ClienteFactura_.idCliente;
 import com.inventario.ProyectoSENA.Modelo.Factura;
 import java.util.ArrayList;
 import java.util.List;

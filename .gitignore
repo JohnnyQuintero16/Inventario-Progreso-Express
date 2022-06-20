@@ -1,6 +1,7 @@
 HELP.md
 
 ### STS ###
+target/
 .apt_generated
 .classpath
 .factorypath
