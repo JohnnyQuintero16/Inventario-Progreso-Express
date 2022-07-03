@@ -14,6 +14,7 @@ import com.inventario.ProyectoSENA.Modelo.ProductoId;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,7 +55,8 @@ public class FacturaController {
         Date date = new Date();
         Factura factura = new Factura(0, date, 0, 0, concepto);
         int id = this.facturaImp.guardar(factura).getId();
-        return ResponseEntity.ok(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                                        .body(id);
     }
     
     @PostMapping("pedido/{idfactura}/{idCliente}")
@@ -67,11 +69,13 @@ public class FacturaController {
         clienteFactura.setIdCliente(this.usuarioImp.buscarUsuario(idCliente));
         clienteFactura.setIdFactura(fac);
         this.clienteFacturaImp.guardarClienteFactura(clienteFactura);
-        return ResponseEntity.ok("añadidos");
+        return ResponseEntity.status(HttpStatus.OK)
+                                        .body("añadidos");
     }
     
     @GetMapping("detalleproductos")
     public ResponseEntity<?> getDetallesProductos(){
-        return ResponseEntity.ok(this.detalleProductoImp.getDetallesProductos());
+        return ResponseEntity.status(HttpStatus.OK)
+                                        .body(this.detalleProductoImp.getDetallesProductos());
     }
 }

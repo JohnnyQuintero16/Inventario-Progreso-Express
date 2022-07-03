@@ -3,6 +3,7 @@ package com.inventario.ProyectoSENA.Controlador;
 import com.inventario.ProyectoSENA.Implementacion.ProductoImp;
 import com.inventario.ProyectoSENA.Modelo.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +29,14 @@ public class ProductoController {
     @PostMapping("guardar")
     public ResponseEntity<?> guardarProducto(@RequestBody Producto producto){
         this.productoImp.guardarProducto(producto);
-        return ResponseEntity.ok("Producto Registrado " + producto);
+        return ResponseEntity.status(HttpStatus.OK)
+                                        .body(producto);
     }
 
     @PostMapping("actualizar")
     public ResponseEntity<?> actualizarProducto(@RequestBody Producto producto){
         this.productoImp.guardarProducto(producto);
-        return ResponseEntity.ok("Producto Actualizado " + producto);
+        return ResponseEntity.status(HttpStatus.OK)
+                                        .body(producto);
     }
 }

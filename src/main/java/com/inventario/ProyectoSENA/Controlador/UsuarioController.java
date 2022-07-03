@@ -35,12 +35,12 @@ public class UsuarioController {
     public ResponseEntity<?> guardarUsuario(@RequestBody Usuario usuario){
         System.out.println("entrando a registrar");
         if(this.usuarioImp.encontrarUsuarioCorreo(usuario.getCorreo()))
-            return ResponseEntity.ok("Usuario Ya se encuetra registrado con el mismo correo " + usuario);
+            return ResponseEntity.status(HttpStatus.OK)
+                                        .body("Usuario Ya se encuetra registrado con el mismo correo " + usuario);
         else{
             this.usuarioImp.guardarUsuario(usuario);
             return ResponseEntity.status(HttpStatus.OK)
                                         .body(usuario);
-//            return ResponseEntity.ok("Usuario registrado  " + usuario);
         }
     }
 
@@ -48,9 +48,10 @@ public class UsuarioController {
     public ResponseEntity<?> actualizarUsuario(@RequestBody Usuario usuario) {
         if (this.usuarioImp.encontrarUsuario(usuario.getId())){
             this.usuarioImp.guardarUsuario(usuario);
-            return ResponseEntity.ok("Usuario modificado");
+            return ResponseEntity.status(HttpStatus.OK)
+                                        .body(usuario);
         }else{
-            return ResponseEntity.ok("Usuario no encontrado");
+            return new ResponseEntity("No encontrado", HttpStatus.NOT_ACCEPTABLE);
         }
     }
     
