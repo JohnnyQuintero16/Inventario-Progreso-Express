@@ -23,7 +23,8 @@ public class ProductoController {
     @DeleteMapping("eliminar/{id}")
     public ResponseEntity<?> eliminarProducto(@PathVariable int id){
         this.productoImp.eliminarProdcuto(id);
-        return ResponseEntity.ok("Eliminado correctamente");
+        return ResponseEntity.status(HttpStatus.OK)
+                                        .body(id);
     }
 
     @PostMapping("guardar")
